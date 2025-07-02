@@ -71,7 +71,7 @@ const ReadBook = () => {
               by {book.author}
             </span>
             <span className="inline-block bg-blue-200 text-blue-800 text-xs font-bold px-3 py-1 rounded">{book.genre}</span>
-            <span className="inline-block bg-green-200 text-green-800 text-xs font-bold px-3 py-1 rounded">{book.year}</span>
+            {/* <span className="inline-block bg-green-200 text-green-800 text-xs font-bold px-3 py-1 rounded">{book.year}</span> */}
             {book.price &&  (
               <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded">
                 ${parseFloat(book.price).toFixed(2)}

@@ -82,8 +82,7 @@ const MyBooks = () => {
       toast.error("No book id found for deletion.");
       return;
     }
-    if (!delect === true) {
-      if (confirm === true) {
+
         try {
           await axios.delete(`${axiosapiurl}/delete-book/${bookId}`);
           setBooks(prevBooks => prevBooks.filter(b => b._id !== bookId));
@@ -93,10 +92,7 @@ const MyBooks = () => {
           toast.error("Failed to delete book.");
           console.error("Delete error:", error);
         }
-      } else {
-        console.log('permission not granted');
-      }
-    }
+     
   };
 
   const handleEditSubmit = async (e) => {
