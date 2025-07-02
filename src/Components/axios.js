@@ -1,3 +1,3 @@
-const axiosapiurl = 'http://localhost:500/api';
+const axiosapiurl = 'https://libaraymanagerbd.vercel.app/api';
 
 export default axiosapiurl;
