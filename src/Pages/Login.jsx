@@ -4,6 +4,8 @@ import axios from 'axios';
 import axiosapiurl from '../Components/axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/Authcontext';
+import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
+
 const Login = () => {
   // const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -33,97 +35,53 @@ const [error, setError] = useState('');
   };
 
   return (
-   
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      background: "#f3f4f6"
-    }}>
-      <div style={{
-        width: "100%",
-        maxWidth: 400,
-        background: "#fff",
-        borderRadius: 16,
-        boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-        padding: 32
-      }}>
-        <h2 style={{
-          fontSize: 28,
-          fontWeight: "bold",
-          marginBottom: 24,
-          textAlign: "center",
-          color: "#1f2937"
-        }}>Login</h2>
-        <form onSubmit={handleSubmit}>
-         
-          <div style={{ marginBottom: 16 }}>
-            <label htmlFor="email" style={{
-              display: "block",
-              color: "#374151",
-              fontWeight: 500,
-              marginBottom: 8
-            }}>Email address</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              style={{
-                width: "100%",
-                padding: "8px 12px",
-                border: "1px solid #d1d5db",
-                borderRadius: 8,
-                outline: "none",
-                fontSize: 16
-              }}
-            />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50 px-2 py-8">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+        <h2 className="text-3xl font-bold mb-8 text-center text-blue-800 flex items-center justify-center gap-2">
+          <FaSignInAlt className="text-green-500" /> Login
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email address</label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><FaEnvelope /></span>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
+                placeholder="Enter your email"
+              />
+            </div>
           </div>
-          <div style={{ marginBottom: 24 }}>
-            <label htmlFor="password" style={{
-              display: "block",
-              color: "#374151",
-              fontWeight: 500,
-              marginBottom: 8
-            }}>Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              style={{
-                width: "100%",
-                padding: "8px 12px",
-                border: "1px solid #d1d5db",
-                borderRadius: 8,
-                outline: "none",
-                fontSize: 16
-              }}
-            />
+          <div>
+            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><FaLock /></span>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
+                placeholder="Enter your password"
+              />
+            </div>
           </div>
-          <button type="submit" style={{
-            width: "100%",
-            background: "#16a34a",
-            color: "#fff",
-            padding: "10px 0",
-            borderRadius: 8,
-            fontWeight: 600,
-            fontSize: 16,
-            border: "none",
-            cursor: "pointer",
-            transition: "background 0.2s"
-          }}
-          onMouseOver={e => e.currentTarget.style.background = "#15803d"}
-          onMouseOut={e => e.currentTarget.style.background = "#16a34a"}
-          >Login</button>
-          <span className='text-center mt-4' style={{ color: "red" }}>{error}</span>
+          {error && <div className="text-center text-red-500 text-sm mb-2">{error}</div>}
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition text-lg shadow flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <FaSignInAlt /> Login
+          </button>
         </form>
-        <div style={{ marginTop: 16, textAlign: "center" }}>
-          <span style={{ color: "#6b7280" }}>Don't have an account? </span>
-          <Link to="/register" style={{ color: "#2563eb", textDecoration: "underline" }}>Register</Link>
+        <div className="mt-6 text-center">
+          <span className="text-gray-500">Don't have an account? </span>
+          <Link to="/register" className="text-blue-600 hover:underline font-semibold">Register</Link>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { AuthContext, useAuth } from '../context/Authcontext';
 import { BooksContext } from '../context/BooksContext';
 import axiosapiurl from '../Components/axios';
+import { FaBook, FaUser, FaCalendarAlt, FaTag, FaFilePdf, FaImage, FaUpload } from 'react-icons/fa';
 
 const AddBook = () => {
   const [title, setTitle] = useState('');
@@ -108,101 +109,125 @@ const AddBook = () => {
   // PDF upload handler (Cloudinary)
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full">
-        <h1 className="text-2xl font-bold mb-6 text-blue-700 text-center">Add a New Book</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-green-50 px-2 py-8">
+      <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-lg w-full border border-gray-100">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-blue-700 text-center flex items-center justify-center gap-2">
+          <FaBook className="inline-block text-green-500" /> Add a New Book
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="title">Title</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="title">
+              <FaBook className="text-blue-400" /> Title
+            </label>
             <input
               id="title"
               type="text"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
               value={title}
               onChange={e => setTitle(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="author">Author</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="author">
+              <FaUser className="text-blue-400" /> Author
+            </label>
             <input
               id="author"
               type="text"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
               value={author}
               onChange={e => setAuthor(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="genre">Genre</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="genre">
+              <FaTag className="text-blue-400" /> Genre
+            </label>
             <input
               id="genre"
               type="text"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
               value={genre}
               onChange={e => setGenre(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="year">Year</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="year">
+              <FaCalendarAlt className="text-blue-400" /> Year
+            </label>
             <input
               id="year"
-              type="date"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              type="number"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
               value={year}
               onChange={e => setYear(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="image">Image</label>
-            <input
-              id="image"
-              type="file"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              onChange={handleImageUpload}
-              required
-            />
-            {imagePreview && (
-              <div className="mt-2">
-                <img src={imagePreview} alt="Preview" className="w-full h-auto rounded-lg" />
-              </div>
-            )}
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="image">
+              <FaImage className="text-blue-400" /> Image
+            </label>
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <label className="flex flex-col items-center justify-center w-full border-2 border-dashed border-blue-300 rounded-lg cursor-pointer hover:border-blue-500 transition p-4">
+                <FaUpload className="text-2xl text-blue-400 mb-2" />
+                <span className="text-xs text-gray-500 mb-1">Click or drag to upload</span>
+                <input
+                  id="image"
+                  type="file"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                  required
+                />
+              </label>
+              {imagePreview && (
+                <div className="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-gray-200 shadow">
+                  <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="pdf">PDF Link or Upload</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1 flex items-center gap-2" htmlFor="pdf">
+              <FaFilePdf className="text-blue-400" /> PDF Link or Upload
+            </label>
             <input
               id="pdf"
               type="url"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-2 text-base"
               value={pdfUrl}
               onChange={e => setPdfUrl(e.target.value)}
               placeholder="https://example.com/your-book.pdf"
             />
             <div className="flex items-center gap-2 mb-2">
-              <input
-                type="file"
-                accept="application/pdf"
-                onChange={handlePdfUpload}
-                className="block"
-                disabled={pdfUploading}
-              />
+              <label className="flex items-center gap-2 cursor-pointer">
+                <FaUpload className="text-blue-400" />
+                <input
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handlePdfUpload}
+                  className="hidden"
+                  disabled={pdfUploading}
+                />
+                <span className="text-xs text-gray-500">Upload PDF</span>
+              </label>
               {pdfUploading && (
                 <span className="text-blue-500 text-xs ml-2">Uploading PDF...</span>
               )}
               <span className="text-xs text-gray-500">or paste a PDF link above</span>
             </div>
             {pdfUrl && pdfUrl.match(/^https?:\/\/.+\.pdf$/i) && (
-              <div className="mt-2">
+              <div className="mt-2 border border-gray-200 rounded-lg overflow-hidden shadow bg-gray-50">
                 <iframe
                   src={`https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
                   title="PDF Preview"
-                  className="w-full h-64 border rounded-lg"
+                  className="w-full h-64 border-0 rounded-b-lg"
                   frameBorder="0"
                 />
-                <div className="text-xs text-gray-500 mt-1">PDF preview (via Google Docs Viewer)</div>
+                <div className="text-xs text-gray-500 mt-1 px-2 pb-2">PDF preview (via Google Docs Viewer)</div>
               </div>
             )}
           </div>
@@ -211,22 +236,24 @@ const AddBook = () => {
               Please upload a PDF before submitting.
             </div>
           )}
-          <div className="mb-6">
-            <label className="block text-gray-700 font-medium mb-2" htmlFor="description">Description</label>
+          <div>
+            <label className="block text-gray-700 font-medium mb-1" htmlFor="description">Description</label>
             <textarea
               id="description"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
               value={description}
               onChange={e => setDescription(e.target.value)}
               rows={4}
               required
             />
           </div>
-          <button type="submit" className="w-full cursor-pointer bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition mb-4">Add Book</button>
+          <button type="submit" className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition text-lg shadow mb-2 flex items-center justify-center gap-2">
+            <FaBook className="inline-block text-white" /> Add Book
+          </button>
         </form>
         <button
           onClick={() => navigate(-1)}
-          className="w-full cursor-pointer bg-gray-300 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-400 transition"
+          className="w-full bg-gray-300 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-400 transition mt-2"
         >
           Back
         </button>
