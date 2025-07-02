@@ -52,7 +52,7 @@ const MyBooks = () => {
     setPdfUploading(true);
     try {
       console.log('Uploading to backend /api/upload-pdf...');
-      const response = await fetch('http://localhost:500/api/upload-pdf', {
+      const response = await fetch(`${axiosapiurl}/upload-pdf`, {
         method: 'POST',
         body: formData,
       });
