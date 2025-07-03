@@ -76,7 +76,7 @@ const Home = () => {
                 <div className="flex items-center gap-2 text-base text-gray-700 mb-1"><span className="font-medium">Author:</span> {book.author}</div>
                 <div className="flex items-center gap-2 text-base text-gray-700 mb-1">
                   <span className="font-medium">Year:</span>{" "}
-                  {book.year}
+                  {book.year ? new Date(book.year).toISOString().slice(0, 10) : ""}
                 </div>
                 <div className="flex items-center gap-2 text-base text-gray-700 mb-2"><span className="font-medium">Genre:</span> {book.genre}</div>
                 <div className="text-gray-600 text-base mb-4 line-clamp-2 min-h-[2.5em]">{book.description?.slice(0, 100) || ''}{book.description && book.description.length > 100 ? '...' : ''}</div>
