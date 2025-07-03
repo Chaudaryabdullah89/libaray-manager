@@ -71,12 +71,21 @@ const Home = () => {
                   </div>
                 )}
             </div>
-            <div className="flex-1 flex flex-col px-6 py-5 gap-2">
-                <h2 className="text-2xl font-bold text-gray-900 truncate mb-2">{book.title}</h2>
-                <div className="flex items-center gap-2 text-base text-gray-700 mb-1"><span className="font-medium">Author:</span> {book.author}</div>
-                <div className="flex items-center gap-2 text-base text-gray-700 mb-1">
-                  <span className="font-medium">Year:</span>{" "}
-                  {book.year ? new Date(book.year).toISOString().slice(0, 10) : ""}
+            <div className="flex-1 flex flex-col p-4 sm:p-5">
+                <h2 className="text-lg sm:text-xl font-semibold mb-1 text-gray-900 truncate">{book.title}</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mb-2">
+                  by {book.author}
+                  {book.userEmail && (
+                    <span className="ml-2 text-xs text-gray-400">(author email: {book.userEmail})</span>
+                  )}
+                </p>
+                <p className="text-xs text-gray-400 mb-1">
+                  Added on {book.createdAt ? new Date(book.createdAt).toLocaleDateString() : "Unknown date"}
+                </p>
+                <p className="text-gray-700 text-xs sm:text-sm mb-3 line-clamp-2">{book.description.slice(0,50)}...</p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">{book.genre}</span>
+                    <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">{book.year}</span>
                 </div>
                 <div className="flex items-center gap-2 text-base text-gray-700 mb-2"><span className="font-medium">Genre:</span> {book.genre}</div>
                 <div className="text-gray-600 text-base mb-4 line-clamp-2 min-h-[2.5em]">{book.description?.slice(0, 100) || ''}{book.description && book.description.length > 100 ? '...' : ''}</div>
