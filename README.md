@@ -16,15 +16,6 @@ A web application for managing and sharing digital books, built with React and V
 
 ## Getting Started
 
-1. **Install dependencies:**
-   ```
-   npm install
-   ```
-2. **Run the app:**
-   ```
-   npm run dev
-   ```
-3. **Access:** Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Tech Stack
 
@@ -35,7 +26,4 @@ A web application for managing and sharing digital books, built with React and V
 - React Router
 - react-hot-toast (notifications)
 - Tailwind CSS
-
-## Contributing
-
-Contributions are welcome! Please fork this repo and submit a pull request.
+\
